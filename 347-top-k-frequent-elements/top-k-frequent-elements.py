@@ -1,18 +1,6 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         frequency_map = collections.Counter(nums)
-        heap = []
-        
-        # Push elements into the heap
-        for num, freq in frequency_map.items():
-            if len(heap) < k:
-                heapq.heappush(heap, (freq, num))
-            else:
-                if freq > heap[0][0]:
-                    heapq.heappop(heap)
-                    heapq.heappush(heap, (freq, num))
-        
-        # Extract the top k frequent elements from the heap
-        top_k_frequent = [elem[1] for elem in heap]
-        
+        # Use heapq.nlargest() to find the k most frequent elements
+        top_k_frequent = heapq.nlargest(k, frequency_map.keys(), key=frequency_map.get)
         return top_k_frequent
