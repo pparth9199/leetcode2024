@@ -5,7 +5,6 @@ class Solution:
         r=len(nums)-1
 
         while l<=r:
-            print(l,r)
             mid = (l+r)//2
             currentMin = min(currentMin,nums[mid])
             if nums[r]<=nums[mid]:
