@@ -10,7 +10,6 @@ class Solution:
                 return binarySearch(mid+1,r,target)
             elif nums[mid]>target:
                 return binarySearch(l, mid-1,target)
-
         l=0 
         r=len(nums)-1
         return binarySearch(l,r,target)
