@@ -1,6 +1,6 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
-        numbers={}
+        numbers=set()
         number=0
         while True:
             for i in str(n):
@@ -10,7 +10,7 @@ class Solution:
                 return True
             if number in numbers:
                 return False
-            numbers[number]=0
+            numbers.add(number)
             n=number
             number=0
 
