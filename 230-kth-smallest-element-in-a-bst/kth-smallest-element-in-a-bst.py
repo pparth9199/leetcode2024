@@ -11,11 +11,10 @@ class Solution:
             if not root:
                 return 
             left = parse(root.left)
+            heap.append(root.val)
             right = parse(root.right)
-            heapq.heappush(heap,root.val)
+ 
         parse(root)
 
-        while k-1:
-            heapq.heappop(heap)
-            k-=1
-        return heap[0]
+        print(heap)
+        return heap[k-1]
