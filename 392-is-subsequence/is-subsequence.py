@@ -3,8 +3,6 @@ class Solution:
         l,r=0,0
         if not s:
             return True
-        if len(s)==1:
-            return s[0] in t
         if len(s)>len(t):
             return False
         while r<len(t) and l<len(s):
