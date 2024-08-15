@@ -4,7 +4,6 @@ class Solution:
 
         while l<=r:
             mid = (l+r)//2
-            print(l,r,mid)
             if nums[mid]==target:
                 return mid
             if nums[mid]>=nums[l]:
