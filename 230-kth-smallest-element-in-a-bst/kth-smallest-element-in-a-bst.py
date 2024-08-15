@@ -13,8 +13,7 @@ class Solution:
             left = parse(root.left)
             heap.append(root.val)
             right = parse(root.right)
+
  
         parse(root)
-
-        print(heap)
         return heap[k-1]
