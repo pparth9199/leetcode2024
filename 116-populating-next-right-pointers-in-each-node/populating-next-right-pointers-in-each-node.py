@@ -15,12 +15,11 @@ class Solution:
             return temp
         q=deque([root])
         while q:
-            level=[]
+            
             size=len(q)
             for i in range(size):
                 current = q.popleft()
-                level.append(current.val)
-                if q and len(level)<size: current.next=q[0]
+                if q and i<size-1: current.next=q[0]
                 else: current.next=None
                 if current.left:
                     q.append(current.left)
