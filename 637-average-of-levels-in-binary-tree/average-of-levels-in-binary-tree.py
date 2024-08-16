@@ -27,7 +27,7 @@ class Solution:
                     q.append(thisNode.left)
                 if thisNode.right:
                     q.append(thisNode.right)
-            res.append(sum(level)/len(level))
+            res.append(sum(level)/size)
         return res
         
         return levels
