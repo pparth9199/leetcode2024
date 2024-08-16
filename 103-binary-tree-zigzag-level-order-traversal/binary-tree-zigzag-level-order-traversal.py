@@ -20,15 +20,15 @@ class Solution:
                 thisNode = q.pop(0)
                 
                 
-                if thisNode.right:
-                    q.append(thisNode.right)
+                
                 if thisNode.left:
                     q.append(thisNode.left)
-
+                if thisNode.right:
+                    q.append(thisNode.right)
                 if flag:
-                    level.append(thisNode.val)
-                else:
                     level.insert(0,thisNode.val)
+                else:
+                    level.append(thisNode.val)
             flag=not flag        
             res.append(level)
         return res
