@@ -9,7 +9,6 @@ class Solution:
         visited = set()
         res=[]
         def dfs(crs):
-            nonlocal res
             if crs in cycle:
                 return False
             if crs in visited:
