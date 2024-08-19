@@ -10,14 +10,13 @@ class Solution:
         if root==None:
             return res
         
-        queue=[]
-        queue.append(root)
+        queue=deque([root])
 
         while queue:
             currentNode=[]
             currentSize = len(queue)
             for i in range(currentSize):
-                thisNode = queue.pop(0)
+                thisNode = queue.popleft()
                 currentNode.append(thisNode.val)
                 if thisNode.left!=None:
                     queue.append(thisNode.left)
