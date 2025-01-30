@@ -1,13 +1,13 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
-        def get_next(number: int) -> int:
-            return sum(int(i) ** 2 for i in str(number))
-        
-        slow = n
-        fast = get_next(n)
-        
-        while fast != 1 and slow != fast:
-            slow = get_next(slow)          # Moves one step
-            fast = get_next(get_next(fast)) # Moves two steps
-        
-        return fast == 1
+        if(n==1 or n==7):
+            return True
+        elif(n<10):
+            return False
+        else:
+            sum =0
+            while(n>0):
+                temp = n%10
+                sum += temp*temp
+                n= n//10
+            return self.isHappy(sum)
