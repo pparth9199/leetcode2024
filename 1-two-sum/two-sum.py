@@ -1,11 +1,12 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         cache={}
-        for index, value in enumerate(nums):
-            if target-value in cache:
-                return [index,cache[target-value]]
+        n=len(nums)
+        for index in range(n):
+            if target-nums[index] in cache:
+                return [index,cache[target-nums[index]]]
             else:
-                cache[value]=index
+                cache[nums[index]]=index
         return []
             
 
