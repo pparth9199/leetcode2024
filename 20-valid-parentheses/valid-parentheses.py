@@ -1,11 +1,20 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        checkerDict = {'(':')','{':'}','[':']'}
-        cacheStack=[]
+        stack = []
+        if len(s) == 1:
+            return False
         for i in s:
-            if i in '{[(':
-                cacheStack.append(i)
-            elif len(cacheStack)==0 or i!=checkerDict[cacheStack.pop()]:
-                return False
-        return len(cacheStack)==0
-
+            if i == "(" or i == "{" or i == "[":
+                stack.append(i)
+            elif i == ")":
+                if not stack or stack.pop() != "(":
+                    return False
+            elif i == "}":
+                if not stack or stack.pop() != "{":
+                    return False
+            elif i == "]":
+                if not stack or stack.pop() != "[":
+                    return False
+        if len(stack) != 0:
+            return False
+        return True
