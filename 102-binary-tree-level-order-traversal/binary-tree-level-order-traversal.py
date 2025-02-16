@@ -25,6 +25,3 @@ class Solution:
             res.append(currlevel)
         
         return res
-
-
-        return res
