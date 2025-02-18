@@ -1,18 +1,21 @@
 class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
-        if color == image[sr][sc]:
+        R, C = len(image), len(image[0])
+        oldcolor = image[sr][sc]
+        if color == oldcolor:
             return image
-        def dfs(r,c,grid,currentColor):
-            if r<0 or c<0 or r>len(grid)-1 or c>len(grid[0])-1:
-                return 
 
-            if grid[r][c]!=currentColor:
-                return
-            grid[r][c] = color
-
-            dfs(r-1,c,grid,currentColor)
-            dfs(r+1,c,grid,currentColor)
-            dfs(r,c-1,grid,currentColor)
-            dfs(r,c+1,grid,currentColor)
-            return grid
-        return dfs(sr,sc,image,image[sr][sc])
+        def dfs(r,c):
+            if image[r][c] == oldcolor:
+                image[r][c] = color
+                if r >= 1:
+                    dfs(r-1, c)
+                if r + 1 < R:
+                    dfs(r+1, c)
+                if c >= 1:
+                    dfs(r, c - 1)
+                if c + 1 < C:
+                    dfs(r,c+1)
+        
+        dfs(sr,sc)
+        return image
