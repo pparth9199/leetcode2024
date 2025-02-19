@@ -7,12 +7,10 @@ class Solution:
 
         while lo<=hi:
             mid = (lo+hi)//2
-            if mid!=0 and nums[mid]<nums[mid-1]:
+            if mid>=0 and nums[mid]<nums[mid-1]:
                 return nums[mid]
             elif nums[mid]>nums[hi]:
                 lo=mid+1
-            elif mid==0 and nums[mid+1]>nums[mid]:
-                return nums[0]
             else:
                 hi=mid-1
     
