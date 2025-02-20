@@ -17,7 +17,7 @@ class Solution:
                 elif grid[m][n] == 1:
                     fresh += 1
         
-        while queue:
+        while queue and fresh > 0:
             lenq = len(queue)
             isRot = 0
             for _ in range(lenq):
