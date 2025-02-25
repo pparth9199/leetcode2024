@@ -5,6 +5,12 @@
 #         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        if not l1 and not l2:
+            return None
+        if not l1:
+            return l2
+        if not l2:
+            return l1
         num1 = []
         num2 = []
         
