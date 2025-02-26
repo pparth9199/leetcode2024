@@ -11,10 +11,10 @@ class Solution:
             nonlocal ans
             if not root:
                 return
-            if root.val >=low and root.val<=high:
-                ans += root.val
             if root.left and root.val > low:
                 dfs(root.left)
+            if root.val >=low and root.val<=high:
+                ans += root.val
             if root.right and root.val<high:
                 dfs(root.right)
             return
