@@ -10,16 +10,19 @@ from typing import Optional
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
         if not node:
-            return node
+            return None
+        visited = {} 
         
-        visited = {}
-        queue = deque([node])
-        visited[node] = Node(node.val, [])
-        while queue:
-            n = queue.popleft()
-            for i in n.neighbors:
-                if i not in visited:
-                    visited[i] = Node(i.val, [])
-                    queue.append(i)
-                visited[n].neighbors.append(visited[i])
-        return visited[node]
+        def dfs(node):
+            if node in visited:
+                return visited[node] 
+            clone = Node(node.val, [])
+            visited[node] = clone 
+            for neighbor in node.neighbors:
+                clone.neighbors.append(dfs(neighbor))
+            return clone
+        
+        return dfs(node)
+
+
+            
