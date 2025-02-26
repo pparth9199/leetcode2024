@@ -9,8 +9,6 @@ class Solution:
         ans=0
         def dfs(root):
             nonlocal ans
-            if not root:
-                return
             if root.left and root.val > low:
                 dfs(root.left)
             if root.val >=low and root.val<=high:
