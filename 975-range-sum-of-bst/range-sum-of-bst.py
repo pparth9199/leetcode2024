@@ -15,6 +15,5 @@ class Solution:
                 ans += root.val
             if root.right and root.val<high:
                 dfs(root.right)
-            return
         dfs(root)
         return ans
