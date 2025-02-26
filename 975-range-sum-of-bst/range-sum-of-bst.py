@@ -13,8 +13,10 @@ class Solution:
                 return
             if root.val >=low and root.val<=high:
                 ans += root.val
-            left = dfs(root.left)
-            right = dfs(root.right)
+            if root.left and root.val > low:
+                dfs(root.left)
+            if root.right and root.val<high:
+                dfs(root.right)
             return
         dfs(root)
         return ans
