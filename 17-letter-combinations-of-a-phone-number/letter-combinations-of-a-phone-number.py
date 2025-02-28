@@ -1,20 +1,20 @@
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
-        pad = {'2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
-        if not digits:
+        dic = {2:['a', 'b' , 'c'], 3:['d','e','f'], 4:['g', 'h', 'i'],
+              5:['j','k','l'], 6:['m','n','o'], 7:['p','q','r','s'], 8:['t','u','v'],
+              9:['w','x','y','z']}
+        if digits == "":
             return []
-
-        def backtrack(p, up):
-            if len(up) == 0:
-                if len(p) == len(digits):
-                    return [p]
-                return []
-            
-            result = []
-            for ch in pad[up[0]]:
-                result += backtrack(p + ch, up[1:])
-            
-            return result
-
-        words = backtrack("", digits)
-        return words
+        res = []
+        n = len(digits)
+        stack = [""]
+        while stack:
+            curr = stack.pop()
+            if len(curr) == n:
+                res.append(curr)
+            else:
+                curr_index = len(curr)
+                letters = dic[int(digits[curr_index])]
+                for l in letters:
+                    stack.append(curr + l)
+        return res
