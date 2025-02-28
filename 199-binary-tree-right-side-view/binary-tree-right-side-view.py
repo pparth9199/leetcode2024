@@ -9,20 +9,15 @@ class Solution:
         if not root:
             return []
         queue = deque([root])
-        levels = []
+        ans = []
         while queue:
-            curr_level = []
+            ans.append(queue[-1].val)
             n = len(queue)
             for i in range(n):
                 node = queue.popleft()
-                curr_level.append(node.val)
                 if node.left:
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
-            levels.append(curr_level)
-        ans = []
-        for i in range(len(levels)):
-            ans.append(levels[i][-1])
         return ans
             
