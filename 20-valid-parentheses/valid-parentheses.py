@@ -1,20 +1,18 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        stack = []
+        dic = {'(':')', '{':'}','[':']'}
+        stack =[]
         if len(s) == 1:
             return False
-        for i in s:
-            if i == "(" or i == "{" or i == "[":
-                stack.append(i)
-            elif i == ")":
-                if not stack or stack.pop() != "(":
+        for i in range(len(s)):
+            if s[i] in dic:
+                stack.append(s[i])
+            else:
+                if not stack:
                     return False
-            elif i == "}":
-                if not stack or stack.pop() != "{":
+                bracket = stack.pop()
+                if s[i] != dic[bracket]:
                     return False
-            elif i == "]":
-                if not stack or stack.pop() != "[":
-                    return False
-        if len(stack) != 0:
+        if stack:
             return False
         return True
