@@ -2,12 +2,14 @@ class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         if len(s) != len(t):
             return False
-        l1 = list(s)
-        l2 = list(t)
-        for i in l1:
-            if i in l2:
-                l2.remove(i)
-            else:
+        d1 = defaultdict(int)
+        for i in range(len(s)):
+            d1[s[i]] += 1
+        for i in range(len(t)):
+            if t[i] not in d1:
+                return False
+            d1[t[i]] -= 1
+        for i in d1.values():
+            if i:
                 return False
         return True
-        
