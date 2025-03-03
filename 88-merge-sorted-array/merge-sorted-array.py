@@ -9,11 +9,9 @@ class Solution:
         while j >= 0:
             if i < 0 or nums1[i] <= nums2[j]:
                 nums1[l] = nums2[j]
-                l = l - 1
                 j = j - 1
             elif nums1[i] > nums2[j]:
                 nums1[l] = nums1[i]
-                l = l - 1
                 i = i - 1
-        
+            l = l - 1
         
