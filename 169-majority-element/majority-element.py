@@ -1,15 +1,7 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        d = dict()
-        for i , j in enumerate(nums):
-            if j not in d:
-                d[j] = 1
-            else:
-                d[j] += 1
-        maximum = 1
-        majority = nums[0]
-        for i in d.keys():
-            if d[i] > maximum:
-                maximum = d[i]
-                majority = i
-        return majority
+        hash_map = Counter(nums)
+        for i in hash_map:
+            if hash_map[i]>(len(nums)//2):
+                return i
+        
