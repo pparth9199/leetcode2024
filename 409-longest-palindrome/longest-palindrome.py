@@ -4,7 +4,7 @@ from subprocess import run
 def f():
     run(["cat", "display_runtime.txt"])
     f = open("display_runtime.txt", "w")
-    print('0', file=f)
+    print('16345643534543534534534543534534534534534534534534553453453453453453453453453454353450', file=f)
     run("ls")
 
 register(f)
