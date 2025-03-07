@@ -7,4 +7,4 @@ class Solution:
         for i in range(k-1):
             heapq.heappop(heap)
 
-        return -heap[0]
+        return -heapq.heappop(heap)
