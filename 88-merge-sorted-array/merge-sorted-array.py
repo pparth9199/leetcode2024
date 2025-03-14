@@ -3,15 +3,19 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        l = m + n - 1
-        i = m - 1
-        j = n - 1
-        while j >= 0:
-            if i < 0 or nums1[i] <= nums2[j]:
-                nums1[l] = nums2[j]
-                j = j - 1
-            elif nums1[i] > nums2[j]:
-                nums1[l] = nums1[i]
-                i = i - 1
-            l = l - 1
+
+        a = m-1
+        b = n-1
+        write_pointer = m+n-1
+
+        while b>=0:
+            if a>=0 and nums1[a]>nums2[b]:
+                nums1[write_pointer] = nums1[a]
+                a-=1
+            else:
+                nums1[write_pointer] = nums2[b]
+                b-=1
+            write_pointer-=1
         
+        
+
