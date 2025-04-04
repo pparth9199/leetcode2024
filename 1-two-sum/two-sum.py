@@ -1,9 +1,8 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        visited = {}
-        for i, j in enumerate(nums):
-            if target - nums[i] in visited:
-                return (i, visited[target - nums[i]])
+        cache = {}
+        for i,v in enumerate(nums):
+            if target-v in cache:
+                return [i,cache[target-v]]
             else:
-                visited[j] = i
-        
+                cache[v] = i
