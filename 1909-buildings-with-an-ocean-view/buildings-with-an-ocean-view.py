@@ -1,11 +1,13 @@
 class Solution:
     def findBuildings(self, heights: List[int]) -> List[int]:
-        res = [len(heights)-1]
-        for i in range(len(heights)-2,-1,-1):
-            if heights[res[-1]]<heights[i]:
-                res.append(i)
-            else:
-                continue
+        i = len(heights) - 1 
+        lastSeen = heights[i]
+        res = [i]
+        i-=1
 
+        while i>=0:
+            if heights[i] > lastSeen:
+                res.append(i)
+            lastSeen = max(lastSeen,heights[i])
+            i-=1
         return res[::-1]
-            
