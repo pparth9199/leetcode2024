@@ -7,7 +7,10 @@ class Solution:
 
         while i>=0:
             if heights[i] > lastSeen:
+                print(heights[i],lastSeen)
                 res.append(i)
             lastSeen = max(lastSeen,heights[i])
             i-=1
+        
+
         return res[::-1]
