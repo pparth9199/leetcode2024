@@ -9,6 +9,6 @@ class Solution:
         def dfs(root):
             if not root:
                 return None
-            root.left, root.right=dfs(root.right),dfs(root.left)
+            root.left,root.right = dfs(root.right),dfs(root.left)
             return root
         return dfs(root)
