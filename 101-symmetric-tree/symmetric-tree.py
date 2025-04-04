@@ -11,6 +11,11 @@ class Solution:
                 return True
             if not p or not q:
                 return False
-            return p.val==q.val and dfs(p.left,q.right) and dfs(p.right,q.left)
-            
+            if p.val!=q.val:
+                return False
+                
+            return dfs(p.left,q.right) and dfs(p.right,q.left)
+
+        if not root:
+            return True
         return dfs(root.left,root.right)
