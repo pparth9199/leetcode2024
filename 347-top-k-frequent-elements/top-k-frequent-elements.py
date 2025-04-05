@@ -3,13 +3,7 @@ class Solution:
         if not nums:
             return []
 
-        counter = {}
-
-        for i in nums:
-            if i in counter:
-                counter[i]+=1
-            else:
-                counter[i] = 1
+        counter = Counter(nums)
 
         heap = [] 
         for i in counter:
