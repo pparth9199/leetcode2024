@@ -21,7 +21,6 @@ class Solution:
                 inserted = True
             elif prev.val > curr.val and (insertVal >= prev.val or insertVal <= curr.val):
                 inserted = True
-
             if inserted:
                 new_node = Node(insertVal)
                 prev.next = new_node
