@@ -14,24 +14,23 @@ class Solution:
 
         first = last = None
 
-        def dfs(node):
-            nonlocal first, last
-            if not node:
-                return
-
-            dfs(node.left)
+        def dfs(root):
+            nonlocal first,last
+            if not root:
+                return 
+            
+            dfs(root.left)
 
             if last:
-                last.right = node
-                node.left = last
+                last.right = root
+                root.left = last
             else:
-                first = node 
-            last = node
+                first = root
+            last = root
 
-            dfs(node.right)
+            dfs(root.right)
 
         dfs(root)
-
         first.left = last
         last.right = first
 
