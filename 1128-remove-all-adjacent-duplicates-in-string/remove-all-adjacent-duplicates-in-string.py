@@ -5,6 +5,6 @@ class Solution:
             if not stack or i != stack[-1]:
                 stack.append(i)  
             else:
-                if stack: stack.pop()
+                stack.pop()
         return "".join(stack)
             
