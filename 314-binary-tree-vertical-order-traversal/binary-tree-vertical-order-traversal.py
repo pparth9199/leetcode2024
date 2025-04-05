@@ -26,8 +26,4 @@ class Solution:
             res.append(orderlist[i])
         return res
         
-        ans = []
-        for i in sorted(orderlist):
-            ans.append(orderlist[i])
-        return ans
         
