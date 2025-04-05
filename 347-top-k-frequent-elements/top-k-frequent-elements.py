@@ -4,8 +4,8 @@ class Solution:
             return []
 
         counter = Counter(nums)
-
         heap = [] 
+        
         for i in counter:
             heapq.heappush(heap,(counter[i],i))
             if len(heap) > k:
