@@ -6,11 +6,8 @@ class SparseVector:
     def dotProduct(self, vec: 'SparseVector') -> int:
         res = 0
         for i in range(len(self.v1)):
-            res += self.v1[i]*vec.getAtIndex(i)
+            res += self.v1[i]*vec.v1[i]
         return res
-    
-    def getAtIndex(self,index):
-        return self.v1[index]
 
 # Your SparseVector object will be instantiated and called as such:
 # v1 = SparseVector(nums1)
