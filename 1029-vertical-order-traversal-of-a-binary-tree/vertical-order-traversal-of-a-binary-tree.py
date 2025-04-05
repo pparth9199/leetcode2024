@@ -21,17 +21,14 @@ class Solution:
             if node.right:
                 queue.append((node.right, (row + 1, col + 1)))
 
-        # Sort keys first by col, then row, then value (if needed)
         sorted_keys = sorted(orderList.keys(), key=lambda x: (x[1], x[0]))
 
-        # Group by column
         cache = defaultdict(list)
         for key in sorted_keys:
             col = key[1]
             for val in sorted(orderList[key]):
                 cache[col].append(val)
 
-        # Final 2D list (sorted by column)
         return [cache[col] for col in sorted(cache)]
         
         
