@@ -13,7 +13,11 @@ class Solution:
                 return 0
             if root.val>=low and root.val<=high:
                 res += root.val
-            dfs(root.left)
-            dfs(root.right)
+                dfs(root.left)
+                dfs(root.right)
+            elif root.val < low:
+                dfs(root.right) 
+            else: 
+                dfs(root.left) 
         dfs(root)
         return res
