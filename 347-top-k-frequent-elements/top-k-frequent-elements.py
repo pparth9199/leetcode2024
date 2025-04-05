@@ -13,13 +13,11 @@ class Solution:
 
         heap = [] 
         for i in counter:
-            heapq.heappush(heap,(-counter[i],i))
+            heapq.heappush(heap,(counter[i],i))
+            if len(heap) > k:
+                heapq.heappop(heap)
 
-        res = []
-        for i in range(k):
-            res.append(heapq.heappop(heap)[1])
-
-        return res
+        return [x[1] for x in heap]
 
 
         
