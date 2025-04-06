@@ -37,6 +37,6 @@ class Solution:
             for c in range(cols):
                 if grid[r][c]=="1":
                     count+=1
-                    # sizes.append(bfs(r,c))
-                    sizes.append(dfs(r,c))
+                    sizes.append(bfs(r,c))
+                    # sizes.append(dfs(r,c))
         return count
