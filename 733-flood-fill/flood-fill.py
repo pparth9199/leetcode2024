@@ -13,8 +13,6 @@ class Solution:
             for dr,dc in [(-1,0),(1,0),(0,-1),(0,1)]:
                 dfs(r+dr,c+dc)
 
-        for r in range(rows):
-            for c in range(cols):
-                if r==sr and c==sc and image[r][c] != color:
-                    dfs(r,c)
+        if image[sr][sc] != color:
+            dfs(sr, sc)
         return image
