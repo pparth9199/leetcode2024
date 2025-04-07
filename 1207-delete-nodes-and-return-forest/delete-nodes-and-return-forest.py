@@ -25,9 +25,9 @@ class Solution:
                 return None
             return node        
 
-        new_root = dfs(root)
+        root = dfs(root)
 
-        if new_root:
-            res.append(new_root)
+        if root:
+            res.append(root)
     
         return res
