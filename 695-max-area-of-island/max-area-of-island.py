@@ -1,34 +1,25 @@
 class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
-        R = len(grid)
-        C = len(grid[0])
-        a = 0
-        ans = 0
-
-        def dfs(r,c):
-            nonlocal a
+        rows = len(grid)
+        cols = len(grid[0])
+        def bfs(r,c):
+            queue = deque([(r,c)])
             grid[r][c] = 2
-            if r > 0:
-                if grid[r-1][c] == 1:
-                    a = a + 1
-                    dfs(r-1,c)
-            if r < R - 1:
-                if grid[r+1][c] == 1:
-                    a = a + 1
-                    dfs(r+1,c)
-            if c > 0:
-                if grid[r][c-1] == 1:
-                    a = a + 1
-                    dfs(r,c-1)
-            if c < C - 1:
-                if grid[r][c+1] == 1:
-                    a = a + 1
-                    dfs(r,c+1)
+            size = 1
+            while queue:
+                dr,dc = queue.popleft()
+                for ro,co in [(-1,0),(1,0),(0,-1),(0,1)]:
+                    nr, nc = dr+ro, dc+co
+                    if 0<=nr<rows and 0<=nc<cols and grid[nr][nc]==1:
+                        grid[nr][nc] = 2
+                        queue.append((nr,nc))
+                        size+=1
+            return size
+        
+        maxSize = 0
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == 1:
+                    maxSize = max(maxSize,bfs(r,c))
 
-        for i in range(R):
-            for j in range(C):
-                if grid[i][j] == 1:
-                    a = 1
-                    dfs(i,j)
-                    ans = max(ans, a)
-        return ans
+        return maxSize
