@@ -1,17 +1,16 @@
+
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        def subHelper(p,up):
-            if len(up)==0:
-                return [p]
+        res = []
 
-            ch = up[0]
-            ans = []
+        def backtrack(p: List[int], up: List[int]):
+            res.append(p[:])  # Add the current subset
 
-            left = subHelper(p+[ch],up[1:])
-            right = subHelper(p,up[1:])
+            for i in range(len(up)):
+                ch = up[i]
+                p.append(ch)
+                backtrack(p, up[i+1:])  # Only move forward
+                p.pop()
 
-            ans.extend(left+right)
-
-            return ans
-
-        return subHelper([],nums)
+        backtrack([], nums)
+        return res
