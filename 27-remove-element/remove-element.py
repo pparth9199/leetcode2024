@@ -1,8 +1,11 @@
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        count=0
-        for i in nums:
-            if i==val:
-                count+=1
-        for i in range(count):
-            nums.remove(val)
+        slow =0
+
+        for fast in range(len(nums)):
+            if nums[fast]!=val:
+                nums[slow] = nums[fast]
+                slow+=1
+
+
+        return slow
