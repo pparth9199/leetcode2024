@@ -1,18 +1,17 @@
 class Solution:
     def findMissingRanges(self, nums: List[int], lower: int, upper: int) -> List[List[int]]:
-        if len(nums)==0:
-            return[[lower,upper]]
-        res=[]
-        intermediate=[]
-        for i in range(len(nums)):
-            if i==0 and nums[i]>lower:
-                intermediate=[lower,nums[i]-1]
-                res.append(intermediate)
-            elif nums[i-1]!=nums[i]-1 and i!=0:
-                intermediate=[nums[i-1]+1,nums[i]-1]
-                res.append(intermediate)
+        p1,p2=0,1
+        if not nums:
+            return [[lower,upper]]
+        res = []
+        if nums[p1]>lower:
+            res.append([lower,nums[p1]-1])
+        while p2<len(nums):
+            if nums[p2]-nums[p1]>1:
+                res.append([nums[p1]+1, nums[p2]-1])
+            p1+=1
+            p2+=1
         if nums[-1]<upper:
-            intermediate=[nums[-1]+1,upper]
-            res.append(intermediate)
-                
+            res.append([nums[-1]+1,upper])
+
         return res
