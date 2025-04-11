@@ -1,11 +1,13 @@
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        dct = Counter(nums1)
-        result = []
-            
-        for n2 in nums2:
-            if n2 in dct and dct[n2]>0:
-                result.append(n2)
-                dct[n2] -= 1
-                
-        return result
+        if len(nums1) > len(nums2): return self.intersect(nums2, nums1)
+
+        count = Counter(nums1)
+        res=[]
+
+        for i in nums2:
+            if count[i]>0:
+                res.append(i)
+                count[i]-=1
+        
+        return res
