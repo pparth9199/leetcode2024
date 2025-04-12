@@ -11,7 +11,7 @@ class Solution:
         while queue:
             node = queue.popleft()
             if node:
-                if not prev_node: # found gap
+                if not prev_node: 
                     return False
                 queue.append(node.left)
                 queue.append(node.right)
