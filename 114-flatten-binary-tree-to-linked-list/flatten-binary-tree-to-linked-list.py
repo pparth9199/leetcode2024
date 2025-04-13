@@ -9,19 +9,17 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
-        if not root:
-            return
-        stack = [root]
-        prev = None
-        while stack:
-            node = stack.pop()
-            if node:
-                stack.append(node.right)
-                stack.append(node.left)
-                if prev:
-                    prev.right = node
-                    prev.left = None
-                    node.left = None
-                prev = node
-        
-        
+        pre = None
+
+        def dfs(root):
+            nonlocal pre
+            if not root:
+                return
+            dfs(root.right)
+            dfs(root.left)
+
+            root.right = pre
+            root.left = None
+            pre = root
+        dfs(root)
+        return pre
