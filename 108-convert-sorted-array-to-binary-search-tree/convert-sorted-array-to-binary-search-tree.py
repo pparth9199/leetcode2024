@@ -6,12 +6,17 @@
 #         self.right = right
 class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
-        def helper(left,right):
-            if left>right:
-                return None
-            p=(left+right)//2
-            node = TreeNode(nums[p])
-            node.left = helper(left,p-1)
-            node.right = helper(p+1,right)
-            return node
-        return helper(0,len(nums)-1)
+        l=0
+        r=len(nums)-1
+        
+        def construct(start,end):
+            if start>end:
+                return
+            mid=(start+end)//2
+            root = TreeNode(nums[mid])
+            root.left = construct(start,mid-1)
+            root.right = construct(mid+1,end)
+            return root
+        return construct(l,r)
+
+            
