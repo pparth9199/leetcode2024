@@ -6,19 +6,36 @@
 #         self.right = right
 class Solution:
     def findSecondMinimumValue(self, root: Optional[TreeNode]) -> int:
-        heap = set()
+        root_val = root.val
+        found = False
+        second = inf
+
         def dfs(root):
-            nonlocal heap
+            nonlocal root_val,found,second
             if not root:
                 return
-            heap.add(root.val)
+            if root_val<root.val<second:
+                second = root.val
+                found=True
             dfs(root.left)
             dfs(root.right)
-        dfs(root)
-        print(heap)
-        heap=list(heap)
-        heapq.heapify(heap)
-        
-        heapq.heappop(heap)
 
-        return heapq.heappop(heap) if len(heap)>=1 else -1
+        dfs(root)
+        return second if found else -1
+            
+        # heap = set()
+        # def dfs(root):
+        #     nonlocal heap
+        #     if not root:
+        #         return
+        #     heap.add(root.val)
+        #     dfs(root.left)
+        #     dfs(root.right)
+        # dfs(root)
+        # print(heap)
+        # heap=list(heap)
+        # heapq.heapify(heap)
+        
+        # heapq.heappop(heap)
+
+        # return heapq.heappop(heap) if len(heap)>=1 else -1
