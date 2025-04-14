@@ -1,21 +1,15 @@
 class Solution:
     def myPow(self, x: float, n: int) -> float:
-        return self.binaryExp(x, n)
-
-        
-    def binaryExp(self, x: float, n: int) -> float:
-        # Base case, to stop recursive calls.
-        if n == 0:
-            return 1
-
-        # Handle case where, n < 0.
-        if n < 0:
-            return 1.0 / self.binaryExp(x, -1 * n)
-
-        # Perform Binary Exponentiation.
-        # If 'n' is odd we perform Binary Exponentiation on 'n - 1' and multiply result with 'x'.
-        if n % 2 == 1:
-            return x * self.binaryExp(x * x, (n - 1) // 2)
-        # Otherwise we calculate result by performing Binary Exponentiation on 'n'.
-        else:
-            return self.binaryExp(x * x, n // 2)
+        def binary(x , n) -> float:
+            if n == 0:
+                return 1
+            
+            if n < 0:
+                return 1.0 / binary(x, -1 * n)
+            
+            if n % 2 == 0:
+                return binary(x * x, n // 2)
+            else:
+                return x * binary(x * x, (n-1)//2)
+            
+        return binary(x, n)
