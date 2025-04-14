@@ -1,19 +1,16 @@
 class Solution:
     def rightSideView(self, root: TreeNode) -> List[int]:
-        if root is None:
-            return []
-        nex_level = deque([root])
-        right = []
-        while nex_level:
-            current = nex_level
-            nex_level = deque()
+        result = []
 
-            while current:
-                node = current.popleft()
-                if node.left:
-                    nex_level.append(node.left)
-                if node.right:
-                    nex_level.append(node.right)
+        def dfs(node, depth):
+            if not node:
+                return
+            # First time reaching this depth
+            if depth == len(result):
+                result.append(node.val)
+            # Visit right first, then left
+            dfs(node.right, depth + 1)
+            dfs(node.left, depth + 1)
 
-            right.append(node.val)
-        return right
+        dfs(root, 0)
+        return result
