@@ -16,11 +16,7 @@ class MovingAverage:
         else:
             return self.current_sum/current_size
 
-        
-        if current_size < self.size:
-            return sum(self.storage)/current_size
-        else:
-            return sum(self.storage[-self.size:])/self.size
+    
 
 
 # Your MovingAverage object will be instantiated and called as such:
