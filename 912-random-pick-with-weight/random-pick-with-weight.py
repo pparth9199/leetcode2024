@@ -8,6 +8,8 @@ class Solution:
             prefix_sum += weight / total_sum  # Store cumulative probability
             self.prefix_sums.append(prefix_sum)
 
+        print(self.prefix_sums)
+
         
 
     def pickIndex(self) -> int:
