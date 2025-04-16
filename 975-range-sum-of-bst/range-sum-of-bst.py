@@ -13,6 +13,6 @@ class Solution:
                 return dfs(root.right) 
             elif root.val>high: 
                 return dfs(root.left) 
-            return root.val +dfs(root.left) +dfs(root.right)
+            return root.val + dfs(root.left) + dfs(root.right)
         res = dfs(root)
         return res
