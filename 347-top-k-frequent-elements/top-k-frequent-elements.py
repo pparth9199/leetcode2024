@@ -4,11 +4,12 @@ class Solution:
             return []
 
         counter = Counter(nums)
-        heap = [] 
-        
-        for i in counter:
-            heapq.heappush(heap,(counter[i],i))
-            if len(heap) > k:
+
+        heap = []
+
+        for key,val in counter.items():
+            heapq.heappush(heap,(val,key))
+            if len(heap)>k:
                 heapq.heappop(heap)
 
         return [x[1] for x in heap]
