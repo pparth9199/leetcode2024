@@ -1,14 +1,16 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
+        sum_count = {0:1}
         count = 0
-        prefix_sum = 0
-        prefix_sum_count = defaultdict(int)
-        prefix_sum_count[0] = 1  # Initialize with prefix sum 0 and count 1
-        
+        current_sum = 0
+
         for num in nums:
-            prefix_sum += num 
-            if (prefix_sum - k) in prefix_sum_count:
-                count += prefix_sum_count[prefix_sum - k]
-            prefix_sum_count[prefix_sum] += 1  # Update the frequency if the current prefix_sum
-        
+            current_sum+=num
+            diff = current_sum-k
+            if diff in sum_count:
+                count+=sum_count[diff]
+            if current_sum in sum_count:
+                sum_count[current_sum] += 1
+            else:
+                sum_count[current_sum] = 1
         return count
