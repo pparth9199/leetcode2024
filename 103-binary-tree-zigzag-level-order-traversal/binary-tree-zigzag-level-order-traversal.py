@@ -22,13 +22,10 @@ class Solution:
                 node = current.popleft()
                 current_level.append(node.val)
 
-                # Always add children in normal order (left first)
                 if node.left:
                     nextLevel.append(node.left)
                 if node.right:
                     nextLevel.append(node.right)
-
-            # Reverse the current level if flip is False
             if not flip:
                 current_level.reverse()
 
