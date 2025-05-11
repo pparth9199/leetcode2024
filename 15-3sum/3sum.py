@@ -7,7 +7,6 @@ class Solution:
                 summ = nums[l] + nums[r]
                 if summ == target:
                     res.append([-target, nums[l], nums[r]])
-                    # Skip duplicates
                     while l < r and nums[l] == nums[l + 1]:
                         l += 1
                     while l < r and nums[r] == nums[r - 1]:
