@@ -1,18 +1,14 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        dic = {'(':')', '{':'}','[':']'}
-        stack =[]
-        if len(s) == 1:
-            return False
-        for i in range(len(s)):
-            if s[i] in dic:
-                stack.append(s[i])
+        stack = []
+        mapping = {')': '(', '}': '{', ']': '['}
+
+        for char in s:
+            if char in mapping:
+                top = stack.pop() if stack else '#'
+                if mapping[char] != top:
+                    return False
             else:
-                if not stack:
-                    return False
-                bracket = stack.pop()
-                if s[i] != dic[bracket]:
-                    return False
-        if stack:
-            return False
-        return True
+                stack.append(char)
+        
+        return not stack
