@@ -13,14 +13,9 @@ class BSTIterator:
     def iterate(self, root):
         if not root:
             return
-         
         right = self.iterate(root.right)
         self.res.append(root.val)
         left = self.iterate(root.left)
-
-        return
-    
-
 
     def next(self) -> int:
         return self.res.pop()
