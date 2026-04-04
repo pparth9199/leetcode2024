@@ -11,12 +11,10 @@ class Solution:
         res = prev
         head = head.next
         while head:
-            if head.val==prev.val:
-                head=head.next
-            else:
+            if head.val!=prev.val:
                 prev.next = ListNode(head.val,None)
                 prev =prev.next
-                head=head.next
+            head=head.next
 
         return res
 
