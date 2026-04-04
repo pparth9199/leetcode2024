@@ -13,7 +13,7 @@ class Solution:
         while head:
             if head.val!=prev.val:
                 prev.next = ListNode(head.val,None)
-                prev =prev.next
+                prev = prev.next
             head=head.next
 
         return res
