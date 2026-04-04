@@ -8,21 +8,25 @@ class BSTIterator:
 
     def __init__(self, root: Optional[TreeNode]):
         self.res=[]
-        def dfs(root):
-            if not root:
-                return 
-            
-            dfs(root.right)
-            self.res.append(root.val)
-            dfs(root.left)
-        dfs(root)
-        
+        self.iterate(root)
+
+    def iterate(self, root):
+        if not root:
+            return
+         
+        right = self.iterate(root.right)
+        self.res.append(root.val)
+        left = self.iterate(root.left)
+
+        return
+    
+
 
     def next(self) -> int:
         return self.res.pop()
+
     def hasNext(self) -> bool:
-        return len(self.res)>0
-        
+        return True if self.res else False
 
 
 # Your BSTIterator object will be instantiated and called as such:
