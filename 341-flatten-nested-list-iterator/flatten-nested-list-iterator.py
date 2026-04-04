@@ -32,7 +32,7 @@ class NestedIterator:
                     iterate(nestedList[i].getList())
         iterate(nestedList)
     
-
+    
     def next(self) -> int:
         current = self.nums[self.p]
         self.p+=1
@@ -41,6 +41,7 @@ class NestedIterator:
     
     def hasNext(self) -> bool:
         return self.p < len(self.nums)
+         
 
 # Your NestedIterator object will be instantiated and called as such:
 # i, v = NestedIterator(nestedList), []
