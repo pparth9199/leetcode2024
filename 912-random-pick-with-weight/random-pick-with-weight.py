@@ -1,29 +1,27 @@
 class Solution:
 
     def __init__(self, w: List[int]):
-        self.prefix_sums = []
-        total_sum = sum(w)
-        prefix_sum = 0
+        self.range = -1
+        self.ranges = []
         for weight in w:
-            prefix_sum += weight / total_sum  # Store cumulative probability
-            self.prefix_sums.append(prefix_sum)
-
-        print(self.prefix_sums)
-
+            self.range+=weight
+            self.ranges.append(self.range)
+    def search(self, target):
+        left = 0
+        right = len(self.ranges)-1
+        while left<right:
+            mid = (left+right)//2
+            if self.ranges[mid]<target:
+                left = mid+1
+            else:
+                right = mid
+        return left
         
+
 
     def pickIndex(self) -> int:
-        target = random.random()    # Generate a number in [0,1)
-        
-        l , h = 0 , len(self.prefix_sums) - 1
-        while l < h:
-            mid = (l + h) // 2
-            if self.prefix_sums[mid] < target:
-                l = mid + 1
-            else:
-                h = mid
-        return l
-        
+        target = random.randint(0,self.range)
+        return self.search(target)
 
 
 # Your Solution object will be instantiated and called as such:
