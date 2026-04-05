@@ -21,15 +21,22 @@ class Node:
 
 class Solution:
     def construct(self, grid: List[List[int]]) -> 'Node':
+        n=len(grid)
+        prefix = [[0] * (n + 1) for _ in range(n + 1)]
+
+        for i in range(n):
+            for j in range(n):
+                prefix[i+1][j+1] = grid[i][j]+prefix[i][j+1]+prefix[i+1][j]-prefix[i][j]
+        
+        def getSum(r,c,n):
+            return prefix[r+n][c+n]-prefix[r][c+n]-prefix[r+n][c]+prefix[r][c] 
+
         def dfs(n,r,c):
-            allSame = True
-            for i in range(n):
-                for j in range(n):
-                    if grid[r][c] != grid[r+i][c+j]:
-                        allSame = False
-                        break
-            if allSame:
-                return Node(grid[r][c],True)
+            total = getSum(r,c,n)
+            if total==0:
+                return Node(0,True)
+            if total==n*n:
+                return Node(1,True)
 
             n=n//2
             tl = dfs(n,r,c)
