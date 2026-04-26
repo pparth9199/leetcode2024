@@ -1,8 +1,14 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        cache = {}
-        for i,v in enumerate(nums):
-            if target-v in cache:
-                return [i,cache[target-v]]
+        res={}
+
+        for i in range(len(nums)):
+            if target-nums[i] in res:
+                return [i,res[target-nums[i]]]
             else:
-                cache[v] = i
+                res[nums[i]] = i
+
+        
+
+
+        
